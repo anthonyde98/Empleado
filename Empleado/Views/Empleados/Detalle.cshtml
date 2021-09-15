@@ -1,0 +1,44 @@
+﻿<style>
+    table colgroup col:nth-child(1) {
+        color: #495057;
+        background-color: #e9ecef;
+        border-color: #dee2e6;
+        width: 175px;
+    }
+</style>
+
+<div>
+    <h2 class="m-4 font-weight-bold">Detalle de empleado</h2>
+    <table class="table text-center">
+        <colgroup>
+            <col />
+            <col />
+        </colgroup>
+        <tbody>
+            <tr>
+                <td class="font-weight-bold">Codigo</td>
+                <td>@Model.Codigo</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Nombre</td>
+                <td>@Model.Nombre</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Sueldo</td>
+                <td>@Model.SueldoBruto</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Sueldo Neto</td>
+                <td>@Model.SueldoNeto</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Fecha de Ingreso</td>
+                <td>@Model.FechaIngreso.ToString("dd/MM/yyyy")</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class=" mt-5">
+    <a class="btn btn-lg btn-secondary font-weight-bold border-dark bg-dark" href="/Empleados"><i class="fas fa-arrow-left m-2"></i>Volver</a>
+</div>

@@ -1,0 +1,47 @@
+﻿<style>
+    .formulario {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+</style>
+
+<div class="formulario border border-5">
+    <form method="POST" action="/Empleados/Crear">
+        <h2 class="m-2">Empleado</h2>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">#</span>
+            <input type="text" class="form-control" placeholder="Codigo" aria-label="Codigo" aria-describedby="basic-addon1" name="Codigo" id="Codigo" required>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Nombre</span>
+            <input type="text" class="form-control" placeholder="Ingrese nombre" aria-label="Nombre" aria-describedby="basic-addon1" name="Nombre" id="Nombre" required>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <input type="text" class="form-control" placeholder="Ingrese sueldo" aria-label="Sueldo" name="SueldoBruto" id="SueldoBruto" required>
+            <span class="input-group-text">.00</span>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Fecha Ingreso</span>
+            <input type="date" class="form-control" aria-label="Fecha" name="FechaIngreso" id="FechaIngreso" required>
+        </div>
+        <div>
+             <input class="btn btn-secondary m-2" type="submit" value="Agregar" />
+        </div>
+    </form>
+        
+    <div class="text-info m-1 p-2">
+        <p>@ViewBag.Datos</p>
+    </div>
+</div>
+
+<div class=" mt-5">
+    <a class="btn btn-lg btn-secondary font-weight-bold border-dark bg-dark" href="/Empleados"><i class="fas fa-arrow-left m-2"></i>Volver</a>
+</div>
+    

@@ -1,0 +1,33 @@
+﻿
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Sueldo</th>
+            <th scope="col">Fecha Ingreso</th>
+            <th scope="col">Sueldo Neto</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <th scope="row">@item.Codigo</th>
+                <td>@item.Nombre</td>
+                <td>@item.SueldoBruto</td>
+                <td>@item.FechaIngreso.ToString("dd/MM/yyyy")</td>
+                <td>@item.SueldoNeto</td>
+                <td>
+                    @Html.ActionLink("", "Detalle", new { id = item.Codigo }, new { @class = "text-decoration-none btn btn-link btn-outline-info fas fa-info-circle", style = "color: blue", title = "Detalle" })
+                    @Html.ActionLink("", "Actualizar", new { id = item.Codigo }, new { @class = "text-decoration-none btn btn-link btn-outline-warning fas fa-pen-alt", style = "color: orange", title = "Actualizar" })
+                    @Html.ActionLink("", "Eliminar", new { id = item.Codigo }, new { @class = "text-decoration-none btn btn-link btn-outline-danger fas fa-trash-alt", style = "color: darkred", title = "Eliminar" })
+                </td>
+            </tr>
+         }
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-lg btn-secondary font-weight-bold border-dark bg-dark" href="Empleados/Crear"><i class="fas fa-plus mr-2"></i> Nuevo empleado</a>
+</div>
