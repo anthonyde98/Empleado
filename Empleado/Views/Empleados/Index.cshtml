@@ -18,10 +18,10 @@
                 <td>@item.Nombre</td>
                 <td>@item.SueldoBruto</td>
                 <td>@item.FechaIngreso.ToString("dd/MM/yyyy")</td>
-                <td>@item.SueldoNeto</td>
+                <td>@{var sueldoNeto = item.SueldoBruto - item.SueldoBruto * 10 / 100;}  @sueldoNeto</td>
                 <td>
                     @Html.ActionLink("", "Detalle", new { id = item.Codigo }, new { @class = "text-decoration-none btn btn-link btn-outline-info fas fa-info-circle", style = "color: blue", title = "Detalle" })
-                    @Html.ActionLink("", "Actualizar", new { id = item.Codigo }, new { @class = "text-decoration-none btn btn-link btn-outline-warning fas fa-pen-alt", style = "color: orange", title = "Actualizar" })
+                    @Html.ActionLink("", "Actualizar", new { id = item.Codigo }, new { @class = "text-decoration-none btn btn-link btn-outline-warning fas fa-pen-alt", style = "color: orange", title = "Editar" })
                     @Html.ActionLink("", "Eliminar", new { id = item.Codigo }, new { @class = "text-decoration-none btn btn-link btn-outline-danger fas fa-trash-alt", style = "color: darkred", title = "Eliminar" })
                 </td>
             </tr>

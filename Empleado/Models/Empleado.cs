@@ -11,6 +11,5 @@ namespace Empleado.Models
         public string Nombre { set; get; }
         public decimal SueldoBruto { set; get; }
         public DateTime FechaIngreso { set; get; }
-        public decimal SueldoNeto { set; get; }
     }
 }

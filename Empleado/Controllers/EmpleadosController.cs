@@ -35,7 +35,8 @@ namespace Empleado.Controllers
         [HttpGet]
         public IActionResult Crear()
         {
-            return View();
+            int codigo = BuscarUlId();
+            return View(codigo);
         }
 
         [HttpPost]
@@ -46,7 +47,7 @@ namespace Empleado.Controllers
             else
                 Listar(empleado, "agregado");
 
-            return View();
+            return View(empleado.Codigo + 1);
         }
 
         public IActionResult Detalle(int id)
@@ -66,7 +67,7 @@ namespace Empleado.Controllers
             EliminarE(empleado.Codigo);
             Listar(empleado, "actualizado");
 
-            return View();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Eliminar(int id)
@@ -92,7 +93,6 @@ namespace Empleado.Controllers
                         employee.Codigo = empleado.Codigo;
                         employee.Nombre = empleado.Nombre;
                         employee.SueldoBruto = empleado.SueldoBruto;
-                        employee.SueldoNeto = empleado.SueldoNeto;
                         employee.FechaIngreso = empleado.FechaIngreso;
                     }
                 }
@@ -124,7 +124,6 @@ namespace Empleado.Controllers
             return existe;
         }
 
-
         public void Listar(Models.Empleado empleado, string respuesta)
         {
             ViewBag.Datos = "Empleado " + respuesta;
@@ -136,9 +135,11 @@ namespace Empleado.Controllers
                 var cadena = HttpContext.Session.GetString("lista");
                 lista = JsonSerializer.Deserialize<List<Models.Empleado>>(cadena);
             }
-            empleado.SueldoNeto = empleado.SueldoBruto - (empleado.SueldoBruto * 10) / 100;
 
             lista.Add(empleado);
+
+            lista.Sort((p, q) => string.Compare(Convert.ToString(p.Codigo), Convert.ToString(q.Codigo)));
+            lista = lista.OrderBy(p => p.Codigo).ToList();
             var s = JsonSerializer.Serialize(lista);
             HttpContext.Session.SetString("lista", s);
         }
@@ -166,6 +167,27 @@ namespace Empleado.Controllers
 
             var s = JsonSerializer.Serialize(lista2);
             HttpContext.Session.SetString("lista", s);
+        }
+
+        public int BuscarUlId()
+        {
+            int id;
+            var lista = new List<Models.Empleado>();
+
+            if (HttpContext.Session.GetString("lista") != null)
+            {
+                var cadena = HttpContext.Session.GetString("lista");
+                lista = JsonSerializer.Deserialize<List<Models.Empleado>>(cadena);
+
+                if (lista.Count == 0)
+                    id = 1;
+                else
+                    id = lista[lista.Count - 1].Codigo + 1;
+            }
+            else
+                id = 1;
+
+            return id;
         }
     }
     

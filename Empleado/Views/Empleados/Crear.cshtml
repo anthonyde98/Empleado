@@ -13,14 +13,14 @@
 
 <div class="formulario border border-5">
     <form method="POST" action="/Empleados/Crear">
-        <h2 class="m-2">Empleado</h2>
+        <h2 class="m-4">Agregar empleado</h2>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">#</span>
-            <input type="text" class="form-control" placeholder="Codigo" aria-label="Codigo" aria-describedby="basic-addon1" name="Codigo" id="Codigo" required>
+            <input type="text" class="form-control" aria-label="Codigo" aria-describedby="basic-addon1" name="Codigo" id="Codigo" value="@Model" readonly required>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Nombre</span>
-            <input type="text" class="form-control" placeholder="Ingrese nombre" aria-label="Nombre" aria-describedby="basic-addon1" name="Nombre" id="Nombre" required>
+            <input type="text" class="form-control" placeholder="Ingrese nombre" aria-label="Nombre" aria-describedby="basic-addon1" name="Nombre" id="Nombre" autofocus required>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">$</span>

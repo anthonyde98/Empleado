@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <td class="font-weight-bold">Sueldo Neto</td>
-                <td>@Model.SueldoNeto</td>
+                <td>@{var sueldoNeto = Model.SueldoBruto - Model.SueldoBruto * 10 / 100;}  @sueldoNeto</td>
             </tr>
             <tr>
                 <td class="font-weight-bold">Fecha de Ingreso</td>
